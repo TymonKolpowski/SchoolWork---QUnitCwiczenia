@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>APERTURE SCIENCE Test Environment</title>
+    <link rel="stylesheet" href="node_modules/qunit/qunit/qunit.css">
+  </head>
+  <body>
+	<div id="workspaceNav">
+	  <a href="#w1" data-sohbtn="workspace" data-sohgroup="workspace" data-sohno="1">1</a>
+	  <a href="#w2" data-sohbtn="workspace" data-sohgroup="workspace" data-sohno="2">2</a>
+	  <a href="#wa" data-sohbtn="workspace" data-sohgroup="workspace" data-sohno="new">+</a>
+	</div>
+  <section id="content">
+    <section data-sohcanv="workspace" data-sohgroup="workspace" data-sohno="1">Body #1</section>
+    <section data-sohcanv="workspace" data-sohgroup="workspace" data-sohno="2">Body #2</section>
+  </section>
+  
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="Workspaces/core.mkNode.js"></script>
+    <script src="Workspaces/workspaces.js"></script>
+
+    <script src="node_modules/qunit/qunit/qunit.js"></script>
+
+    <script src="test/testCreateWorkspace.js"></script>
+</body>
+</html>

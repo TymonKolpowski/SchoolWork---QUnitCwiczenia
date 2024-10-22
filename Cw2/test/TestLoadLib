@@ -1,0 +1,28 @@
+QUnit.module("Testowanie generacji elementow", function(){
+
+    QUnit.test("Test generacji elementu link w znaczniku head", function(assert){
+        let head = document.getElementsByTagName('head')[0];
+        let linkCountBefore = head.getElementsByTagName('link').length;
+        LoadLib("head","link", "./files/", "style.css", "stylesheet", 4) 
+        let linkCount = head.getElementsByTagName('link').length;
+        assert.equal(linkCount, linkCountBefore+1, "Pomyslnie dodano link do elementu head");
+        assert.equal(head.getElementsByTagName('link')[linkCount-1].getAttribute("href"), "./files/style.css?ver=4", "Poprawnie dodano atrybut href");
+        assert.equal(head.getElementsByTagName('link')[linkCount-1].getAttribute("rel"), "stylesheet", "Atrybut rel dodano poprawnie");
+    });  
+    QUnit.test("Test generacji elementu script w znaczniku head", function(assert){
+        let head = document.getElementsByTagName('head')[0];
+        let scriptCountBefore = head.getElementsByTagName('script').length;
+        LoadLib("head","script", "./files/", "scriptHead.js");
+        let scriptCount = head.getElementsByTagName('script').length;
+        assert.equal(scriptCount, scriptCountBefore+1, "Pomyslnie dodano skrypt do elementu head");
+        assert.equal(head.getElementsByTagName('script')[scriptCount-1].getAttribute("src"), "./files/scriptHead.js", "Atrybut src dodano poprawnie");
+    });
+    QUnit.test("Test generacji elementu script w znaczniku body", function(assert){
+        let body = document.getElementsByTagName('body')[0];
+        let scriptCountBefore = body.getElementsByTagName('script').length;
+        LoadLib("body","script", "./files/", "script.js");
+        let scriptCount = body.getElementsByTagName('script').length;
+        assert.equal(scriptCount, scriptCountBefore+1, "Pomyslnie dodano skrypt do elementu head");
+        assert.equal(body.getElementsByTagName('script')[scriptCount-1].getAttribute("src"), "./files/script.js", "Atrybut src dodano poprawnie");
+    });
+});
